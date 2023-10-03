@@ -6,7 +6,12 @@ export function ToDoList({ toDos, toggleToDo, deleteToDo }) {
             {toDos.length === 0 && "No To Do's"}
             {toDos.map(toDo => {
                 return (
-                    <ToDoItem {...toDo} key={toDo.id} toggleToDo={toggleToDo} deleteToDo={deleteToDo} />
+                    <ToDoItem
+                        {...toDo}
+                        key={toDo.id}
+                        toggleToDo={toggleToDo}
+                        deleteToDo={deleteToDo}
+                    />
                 )
             })}
         </ul>

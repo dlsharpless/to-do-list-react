@@ -1,10 +1,19 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./style.css"
 import { NewToDoForm } from "./NewToDoForm"
 import { ToDoList } from "./ToDoList"
 
 export default function App() {
-    const [toDos, setToDos] = useState([])
+    const [toDos, setToDos] = useState(() => {
+        const localValue = localStorage.getItem("ITEMS")
+        if (localValue == null) return []
+
+        return JSON.parse(localValue)
+    })
+
+    useEffect(() => {
+        localStorage.setItem("ITEMS", JSON.stringify(toDos))
+    }, [toDos])
 
     function addToDo(title) {
         setToDos(currentToDos => {
@@ -22,7 +31,7 @@ export default function App() {
                     return { ...toDo, completed }
                 }
 
-            return toDo
+                return toDo
             })
         })
     }

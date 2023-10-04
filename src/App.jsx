@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import "./style.css"
 import { NewToDoForm } from "./NewToDoForm"
 import { ToDoList } from "./ToDoList"
